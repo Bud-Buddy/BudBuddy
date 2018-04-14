@@ -53,6 +53,15 @@
 
 <script>
 
+    var imgArray = [
+    // Hybrid
+    "hybrid1.jpg", "hybrid2.jpg", "hybrid3.jpg", "hybrid4.jpg", "hybrid5.jpg", "hybrid6.jpg","hybrid7.jpg","hybrid8.jpg","hybrid9.jpg",
+    // Sativa
+    "sativa1.jpg", "sativa2.jpg", "sativa3.jpg", "sativa4.jpg", "sativa5.jpg", "sativa6.jpg","sativa7.jpg","sativa8.jpg","sativa9.jpg",
+    // Indica
+    "indica1.jpg", "indica2.jpg", "indica3.jpg", "indica4.jpg", "indica5.jpg", "indica6.jpg","indica7.jpg","indica8.jpg","indica9.jpg",
+]
+
 
     //http://strainapi.evanbusse.com/SBAgs43/strains/search/race/hybrid
 
@@ -93,7 +102,7 @@ $.ajax({
 
         var name = res[i].name
         var type = res[i].race
-        var weedImage = weedArray[0]
+        var weedImage = weedArray[i]
 
 
         // $(".card-text").text(name)
