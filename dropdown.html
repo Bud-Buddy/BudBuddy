@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> 
+</head>
+<body>
+
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-4">Strains</h1>
+    </div>
+</div>
+
+
+</br>
+
+
+<div class="container">
+    <div class="row">
+
+            <div class="card" style="width: 33%;">
+        
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                <p class="card-text">Strain info</p>
+                </div>
+            </div>
+    
+    </div>
+</div>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-success">Strain Type</button>
+    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Indica </a>
+      <a class="dropdown-item" href="#">Sativa</a>
+      <a class="dropdown-item" href="#">Hybrid</a>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-warning">Effect</button>
+    <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item indica" href="#">Relaxing</a>
+      <a class="dropdown-item" href="#">Uplifting</a>
+      <a class="dropdown-item" href="#">Relaxing and Uplifting</a>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-danger">Symptoms</button>
+    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Insomnia</a>
+    <a class="dropdown-item" href="#">Depression</a>
+    <a class="dropdown-item" href="#">Insomnia and Depression</a>
+  </div>
+</div>
+      <!-- <input id="search-input" placeholder="search strain here"></input>
+      <button id="search-button">SEARCH</button> -->
+      
+      
+   
+
+
+
+    
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+
+    //http://strainapi.evanbusse.com/SBAgs43/strains/search/race/hybrid
+
+
+var hybrid = "strains/search/race/hybrid"
+var sativa = "strains/search/race/sativa"
+var indica = "strains/search/race/indica"
+
+var weedArray = ["BudBuddy/weed-images/sativa/BruceBanner.jpg"]
+
+
+//X-API-Key: 2933b330af100be3d031a4c7531d683868913d9a
+
+
+placeholderString = "strains/search/race/"
+
+$("#search-button").on("click", function searchFunction() {
+
+var searchInput = $("#search-input").val().trim()
+
+console.log("search input:", searchInput)
+
+
+var queryURL = "http://strainapi.evanbusse.com/SBAgs43/" + placeholderString + searchInput
+
+console.log("query URL:", queryURL)
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+    var res = response
+    console.log("array of objects", res)
+    //console.log("res0", res[0])
+    
+    
+    for(var i=0; i<10; i++) {
+
+        var name = res[i].name
+        var type = res[i].race
+        var weedImage = weedArray[0]
+
+
+        // $(".card-text").text(name)
+        // $(".card-body").text(type)
+
+        var newCard = $("<div>")
+            newCard.addClass("card").text(name)
+            $(".row").append(name + type)
+
+        //  var newImage= $("<img>")
+        //     newImage.addClass("card-img-top").attr("src", weedImage )
+        //     $(".card").append(newImage)
+
+
+        // var newType= $("<div>")
+        //     newImage.addClass("card-text").text(type)
+        //     $(".card-img-top").append(newType)
+        //newCard.addClass("card").text(name)
+
+    console.log("name:", name)
+    console.log("type:", type)
+
+      }
+    
+  })
+
+})
+
+
+
+
+
+
+
+
+
+     
+</script>
+</body>
+</html>
+
+
