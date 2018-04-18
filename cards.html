@@ -26,13 +26,14 @@
 <div class="container">
     <div class="row">
 
-            <div class="card" style="width: 33%;">
-        
-                <!-- <img class="card-img-top" alt="Card image cap"> -->
-                <div class="card-body">
-                <!-- <p class="card-text">Strain info</p> -->
-                </div>
-            </div>
+            <div class="card border-success mb-3" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
     
     </div>
 </div>
@@ -43,7 +44,9 @@
       
       
    
-
+<style>
+    .card{display:inline-block;}
+</style>
 
 
     
@@ -101,19 +104,15 @@ $.ajax({
         var type = res[i].race
         var image = imgArray[i]
 
-
-        // $(".card-text").text(name)
-        // $(".card-body").text(type)
-
-        var newCard = $("<div>"),
-            eachType = $("<div>"),
-            newImage = $("<img>")
-        newCard.addClass("card").text(name)
-        eachType.addClass("card-text").text(type)
-        newImage.addClass("card-img-top").attr("src", image)
-        newCard.prepend(newImage)
-        newCard.append(eachType)
-        cardsHolder.append(newCard)
+        var newCard = $("<div class='col-md-6 col-lg-4'class='card pt-4 mb-3'>")  
+            eachType = $("<p class='card-text'>")
+            newImage = $("<img class='card-img-top morph img-fluid'>")
+            newCard.addClass("card").text(name)
+            eachType.addClass("card-text").text(type)
+            newImage.addClass("card-img-top").attr("src", image)
+            newCard.prepend(newImage)
+            newCard.append(eachType)
+            cardsHolder.append(newCard)
 
     console.log("name:", name)
     console.log("type:", type)
