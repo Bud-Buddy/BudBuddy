@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+</head>
+<body>
+
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-4">Strains</h1>
+    </div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+
+            <div class="card" style="width: 33%;">
+        
+                <!-- <img class="card-img-top" alt="Card image cap"> -->
+                <div class="card-body">
+                <!-- <p class="card-text">Strain info</p> -->
+                </div>
+            </div>
+    
+    </div>
+</div>
+
+
+      <input id="search-input" placeholder="search strain here"></input>
+      <button id="search-button">SEARCH</button>
+      
+      
+   
+
+
+
+    
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+
+    //http://strainapi.evanbusse.com/SBAgs43/strains/search/race/hybrid
+
+
+var hybrid = "strains/search/race/hybrid"
+var sativa = "strains/search/race/sativa"
+var indica = "strains/search/race/indica"
+
+var imgArray = [
+    // Hybrid
+    "imgs/hybrid1.jpg", "imgs/hybrid2.jpg", "imgs/hybrid3.jpg", "imgs/hybrid4.jpg", "imgs/hybrid5.jpg", "imgs/hybrid6.jpg","imgs/hybrid7.jpg","imgs/hybrid8.jpg","imgs/hybrid9.jpg",
+    // Sativa
+    "imgs/sativa1.jpg", "imgs/sativa2.jpg", "imgs/sativa3.jpg", "imgs/sativa4.jpg", "imgs/sativa5.jpg", "imgs/sativa6.jpg","imgs/sativa7.jpg","imgs/sativa8.jpg","imgs/sativa9.jpg",
+    // Indica
+    "imgs/indica1.jpg", "imgs/indica2.jpg", "imgs/indica3.jpg", "imgs/indica4.jpg", "imgs/indica5.jpg", "imgs/indica6.jpg","imgs/indica7.jpg","imgs/indica8.jpg","imgs/indica9.jpg",
+]
+//X-API-Key: 2933b330af100be3d031a4c7531d683868913d9a
+
+
+placeholderString = "strains/search/race/"
+
+$("#search-button").on("click", function searchFunction() {
+
+var searchInput = $("#search-input").val().trim()
+
+console.log("search input:", searchInput)
+
+
+var queryURL = "http://strainapi.evanbusse.com/SBAgs43/" + placeholderString + searchInput
+
+console.log("query URL:", queryURL)
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+    var res = response
+    console.log("array of objects", res)
+    //console.log("res0", res[0])
+    
+    var cardsHolder = $("<div>")
+        cardsHolder.attr('class', 'cardsHolder')
+    for(var i=0; i<10; i++) {
+
+        var name = res[i].name
+        var type = res[i].race
+        var image = imgArray[i]
+
+
+        // $(".card-text").text(name)
+        // $(".card-body").text(type)
+
+        var newCard = $("<div>"),
+            eachType = $("<div>"),
+            newImage = $("<img>")
+        newCard.addClass("card").text(name)
+        eachType.addClass("card-text").text(type)
+        newImage.addClass("card-img-top").attr("src", image)
+        newCard.prepend(newImage)
+        newCard.append(eachType)
+        cardsHolder.append(newCard)
+
+    console.log("name:", name)
+    console.log("type:", type)
+    console.log("image:", image)
+
+      }
+      $(".card-body").append(cardsHolder)
+    
+  })
+
+})
+
+
+
+
+
+
+
+
+
+     
+</script>
+</body>
+</html>
