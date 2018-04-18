@@ -12,6 +12,16 @@
 </head>
 
 <body>
+    <style>
+    .card-img-top {
+       width: 100px;
+       height: 100px;
+    }
+
+    .card-body {
+        display: inline-block
+    }
+    </style>
 	
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -33,10 +43,45 @@
   <p>Learn about weed strain strains</p>
 </div>
 
-<div class="container">
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
-</div>
+    <div class="container  mb-5">
+    <div class="btn-group  mb-5">
+        <button type="button" class="btn btn-success">Strain Type</button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item indica" href="#">Indica </a>
+          <a class="dropdown-item sativa" href="#">Sativa</a>
+          <a class="dropdown-item hybrid" href="#">Hybrid</a>
+        </div>
+      </div>
+      <div class="btn-group  mb-5">
+        <button type="button" class="btn btn-warning">Effect</button>
+        <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item indica" href="#">Relaxing</a>
+          <a class="dropdown-item sativa" href="#">Uplifting</a>
+          <a class="dropdown-item hybrid" href="#">Relaxing and Uplifting</a>
+        </div>
+      </div>
+      <div class="btn-group  mb-5">
+        <button type="button" class="btn btn-danger">Symptoms</button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item indica" href="#">Insomnia</a>
+        <a class="dropdown-item sativa" href="#">Depression</a>
+        <a class="dropdown-item hybrid" href="#">Insomnia and Depression</a>
+      </div>
+    </div>    
+    <div class="container">
+      <!-- Cards Display -->
+      <div class="card-group" id="cardsDiv"></div>
+    </div>
+
 	
 
 	
@@ -69,6 +114,7 @@
                     </li>
                 </ul>
             </div>
+
             <!--/.Second column-->
         </div>
     </div>
@@ -83,6 +129,69 @@
 
 </footer>
 <!--/.Footer-->
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var hybrid = "strains/search/race/hybrid"
+var sativa = "strains/search/race/sativa"
+var indica = "strains/search/race/indica"
+placeholderString = "strains/search/race/"
+searchInput = ""
+var imgArray = [
+    // Hybrid
+    "imgs/hybrid1.jpg", "imgs/hybrid2.jpg", "imgs/hybrid3.jpg", "imgs/hybrid4.jpg", "imgs/hybrid5.jpg", "imgs/hybrid6.jpg","imgs/hybrid7.jpg","imgs/hybrid8.jpg","imgs/hybrid9.jpg",
+    // Sativa
+    "imgs/sativa1.jpg", "imgs/sativa2.jpg", "imgs/sativa3.jpg", "imgs/sativa4.jpg", "imgs/sativa5.jpg", "imgs/sativa6.jpg","imgs/sativa7.jpg","imgs/sativa8.jpg","imgs/sativa9.jpg",
+    // Indica
+    "imgs/indica1.jpg", "imgs/indica2.jpg", "imgs/indica3.jpg", "imgs/indica4.jpg", "imgs/indica5.jpg", "imgs/indica6.jpg","imgs/indica7.jpg","imgs/indica8.jpg","imgs/indica9.jpg",
+]
+var strainAPI = "http://strainapi.evanbusse.com/SBAgs43/"
+  $(document).on("click",".indica", function(){
+            searchInput = indica
+            appendInfo()
+        })
+        $(document).on("click",".sativa", function(){
+            searchInput = sativa
+            appendInfo()
+        })
+        $(document).on("click",".hybrid", function(){
+            searchInput = hybrid
+            appendInfo()
+        })
+        
+function appendInfo(){
+    var queryURL  = strainAPI + searchInput
+    console.log(queryURL)
+    $.ajax({
+        url: queryURL,
+        method:"GET"
+    }).then(function(response){
+        console.log("array of objects", response)
+    for(var i=0; i<9; i++) {
+        var name = response[i].name
+        var type = response[i].race
+        var image = imgArray[i]
+        // Create New Cards
+        var cardsHolder = $("#cardsDiv")
+        var newCard = $("<div>") 
+            newCard.addClass("card-body")
+        var newTitle = $("<h5>")
+            newTitle.text(name)
+        var eachType = $("<p class='card-text'>")
+            eachType.text(type)
+        var newImage = $("<img>")
+            newImage.addClass("card-img-top", "morph", "img-fluid")
+        newImage.attr("src", image)
+        newCard.prepend(newImage)
+        newCard.append(newTitle)
+        newCard.append(eachType)
+        cardsHolder.append(newCard)
+    }
+    })
+    
+}
+</script>
                       
 </body>
 </html>
