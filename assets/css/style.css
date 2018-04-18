@@ -1,0 +1,64 @@
+body{
+	font-family: "Helvetica Neue";
+}
+.logo {
+	font-size: 28px;
+	font-weight: 120;
+	line-height: 29.7px;
+	color: #3f733a;
+	margin-right: 20px;
+}
+
+.navbar-nav{
+	margin: 10px;
+	background: ;
+}
+.navbar-expand-sm{
+	background: ;	
+}
+
+.nav-link{
+    color: #363636;
+	font-size: 18px;
+	margin-left: 20px;
+}
+
+img {
+  display: inline;
+  width: 100%;
+  height: auto;
+}
+
+
+.fadein img{
+opacity:0.7;
+transition: 1s ease;
+}
+
+.fadein img:hover{
+opacity:1;
+transition: 1s ease;
+}
+
+.news{
+	color: white;
+	font-family: "Helvetica Neue";
+	align-content: center;
+	
+}
+
+.btn{
+	background-color: #ff7300;
+	font-family: "Helvetica Neue";
+}
+.m-4{
+	margin: 0px;
+}
+
+.page-footer{
+	background: #D8D8D8; 
+}
+
+.modSubj{
+    margin: 8px;
+}

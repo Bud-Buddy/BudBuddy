@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Working Dropdown Console Log</title>
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> 
+</head>
+<body>
+
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-4">Search Page</h1>
+    </div>
+</div>
+
+
+</br>
+
+
+<div class="container  mb-5">
+
+
+<div class="btn-group  mb-5">
+    <button type="button" class="btn btn-success">Strain Type</button>
+    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item indica" href="#">Indica </a>
+      <a class="dropdown-item sativa" href="#">Sativa</a>
+      <a class="dropdown-item hybrid" href="#">Hybrid</a>
+    </div>
+  </div>
+  <div class="btn-group  mb-5">
+    <button type="button" class="btn btn-warning">Effect</button>
+    <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item indica" href="#">Relaxing</a>
+      <a class="dropdown-item sativa" href="#">Uplifting</a>
+      <a class="dropdown-item hybrid" href="#">Relaxing and Uplifting</a>
+    </div>
+  </div>
+  <div class="btn-group  mb-5">
+    <button type="button" class="btn btn-danger">Symptoms</button>
+    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item indica" href="#">Insomnia</a>
+    <a class="dropdown-item sativa" href="#">Depression</a>
+    <a class="dropdown-item hybrid" href="#">Insomnia and Depression</a>
+  </div>
+</div>    
+
+<div class="container">
+  <!-- Cards Display -->
+  <div class="" id="cardsDiv"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+var hybrid = "strains/search/race/hybrid"
+var sativa = "strains/search/race/sativa"
+var indica = "strains/search/race/indica"
+placeholderString = "strains/search/race/"
+searchInput = ""
+var imgArray = [
+    // Hybrid
+    "../imgs/hybrid1.jpg", "../imgs/hybrid2.jpg", "../imgs/hybrid3.jpg", "../imgs/hybrid4.jpg", "../imgs/hybrid5.jpg", "../imgs/hybrid6.jpg","../imgs/hybrid7.jpg","../imgs/hybrid8.jpg","../imgs/hybrid9.jpg",
+    // Sativa
+    "../imgs/sativa1.jpg", "../imgs/sativa2.jpg", "../imgs/sativa3.jpg", "../imgs/sativa4.jpg", "../imgs/sativa5.jpg", "../imgs/sativa6.jpg","../imgs/sativa7.jpg","../imgs/sativa8.jpg","../imgs/sativa9.jpg",
+    // Indica
+    "../imgs/indica1.jpg", "../imgs/indica2.jpg", "../imgs/indica3.jpg", "../imgs/indica4.jpg", "../imgs/indica5.jpg", "../imgs/indica6.jpg","../imgs/indica7.jpg","../imgs/indica8.jpg","../imgs/indica9.jpg",
+]
+
+var strainAPI = "http://strainapi.evanbusse.com/SBAgs43/"
+
+
+  $(document).on("click",".indica", function(){
+            searchInput = indica
+            appendInfo()
+        })
+        $(document).on("click",".sativa", function(){
+            searchInput = sativa
+            appendInfo()
+        })
+        $(document).on("click",".hybrid", function(){
+            searchInput = hybrid
+            appendInfo()
+
+        })
+        
+
+function appendInfo(){
+    var queryURL  = strainAPI + searchInput
+    console.log(queryURL)
+
+    $.ajax({
+        url: queryURL,
+        method:"GET"
+    }).then(function(response){
+        console.log("array of objects", response)
+
+    for(var i=0; i<10; i++) {
+        var name = response[i].name
+        var type = response[i].race
+        var image = imgArray[i]
+
+        // Create New Cards
+        var cardsHolder = $("#cardsDiv")
+        var newCard = $("<div class='row'>") 
+            newCard.html("<h5>"+ name + "</h5>")
+        var eachType = $("<p class='card-text'>")
+            eachType.text(type)
+        var newImage = $("<img>")
+        newImage.attr("src", image)
+        newCard.prepend(newImage)
+        newCard.prepend(eachType)
+        cardsHolder.prepend(newCard)
+    }
+
+    })
+    
+}
+
+        
+ </script>
+        
+
+</body>
+</html>
+
+

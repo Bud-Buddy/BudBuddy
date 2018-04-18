@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/styles.css">    
+</head>
+<body>
+
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-4">Strains</h1>
+    </div>
+</div>
+
+
+</br>
+
+
+<div class="container">
+    <div class="row">
+
+            <div class="card" style="width: 33%;">
+        
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                <p class="card-text">Strain info</p>
+                </div>
+            </div>
+    
+    </div>
+</div>
+
+
+      <input id="search-input" placeholder="search strain here"></input>
+      <button id="search-button">SEARCH</button>
+      
+      
+   
+
+
+
+    
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+    var imgArray = [
+    // Hybrid
+    "hybrid1.jpg", "hybrid2.jpg", "hybrid3.jpg", "hybrid4.jpg", "hybrid5.jpg", "hybrid6.jpg","hybrid7.jpg","hybrid8.jpg","hybrid9.jpg",
+    // Sativa
+    "sativa1.jpg", "sativa2.jpg", "sativa3.jpg", "sativa4.jpg", "sativa5.jpg", "sativa6.jpg","sativa7.jpg","sativa8.jpg","sativa9.jpg",
+    // Indica
+    "indica1.jpg", "indica2.jpg", "indica3.jpg", "indica4.jpg", "indica5.jpg", "indica6.jpg","indica7.jpg","indica8.jpg","indica9.jpg",
+]
+
+
+    //http://strainapi.evanbusse.com/SBAgs43/strains/search/race/hybrid
+
+
+var hybrid = "strains/search/race/hybrid"
+var sativa = "strains/search/race/sativa"
+var indica = "strains/search/race/indica"
+
+var weedArray = ["BudBuddy/weed-images/sativa/BruceBanner.jpg"]
+
+
+//X-API-Key: 2933b330af100be3d031a4c7531d683868913d9a
+
+
+placeholderString = "strains/search/race/"
+
+$("#search-button").on("click", function searchFunction() {
+
+var searchInput = $("#search-input").val().trim()
+
+console.log("search input:", searchInput)
+
+
+var queryURL = "http://strainapi.evanbusse.com/SBAgs43/" + placeholderString + searchInput
+
+console.log("query URL:", queryURL)
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+    var res = response
+    console.log("array of objects", res)
+    //console.log("res0", res[0])
+    
+    
+    for(var i=0; i<10; i++) {
+
+        var name = res[i].name
+        var type = res[i].race
+        var weedImage = weedArray[i]
+
+
+        // $(".card-text").text(name)
+        // $(".card-body").text(type)
+
+        var newCard = $("<div>")
+            newCard.addClass("card").text(name)
+            $(".row").append(name + type)
+
+        //  var newImage= $("<img>")
+        //     newImage.addClass("card-img-top").attr("src", weedImage )
+        //     $(".card").append(newImage)
+
+
+        // var newType= $("<div>")
+        //     newImage.addClass("card-text").text(type)
+        //     $(".card-img-top").append(newType)
+        //newCard.addClass("card").text(name)
+
+    console.log("name:", name)
+    console.log("type:", type)
+
+      }
+    
+  })
+
+})
+
+
+
+
+
+
+
+
+
+     
+</script>
+</body>
+</html>
+
+
