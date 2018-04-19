@@ -46,7 +46,7 @@ function appendInfo(){
         method:"GET"
     }).then(function(response){
 
-    for(var i=0; i<10; i++) {
+    for(var i=0; i<9; i++) {
         var name = response[i].name
         var type = response[i].race
         var id = response[i].id
@@ -56,10 +56,12 @@ function appendInfo(){
         // Create New Cards
         var cardsHolder = $("#cardsDiv")
         var newCard = $("<div>") 
-            newCard.addClass("card")
+            newCard.addClass("card m-3")
+            newCard.css({"height":"350px", "display": "inline-block","width":"300px",})
         var newImage = $("<img>")
             newImage.attr("src", image)
             newImage.addClass("searchImages")
+            newImage.css({"height":"350px", "display": "inline-block","width":"350px",})
             newImage.addClass("card-img-top")
         var cardMain = $("<div>")
             cardMain.addClass("card-img-overlay")
