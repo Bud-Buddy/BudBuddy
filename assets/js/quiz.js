@@ -3,9 +3,9 @@ var questions = [
     {
     question: "On a typical Saturday night, you are...",
     answerList: [
-        { strain: "indica", value: "Chilling on the couch in front of the TV" },
-        { strain: "sativa", value: "Dancing like a maniac" },
-        { strain: "hybrid", value: "Having dinner with friends" },
+        { strain: "indica", value: "Chilling on the couch in front of the TV." },
+        { strain: "sativa", value: "Dancing like a maniac." },
+        { strain: "hybrid", value: "Having dinner with friends." },
     ]
     }, {
     question: "Which of the following sounds like a dream vacation to you?",
@@ -17,7 +17,7 @@ var questions = [
     }, {
     question: "What type of animal do you most relate to?",
     answerList: [
-        { strain: "indica", value: "Housecat. Nothing but naps and belly rubs? Yes please!" },
+        { strain: "indica", value: "Housecat. Nothing but naps and belly rubs? Yes, please!" },
         { strain: "sativa", value: "Hummingbird. I'm always flying somewhere." },
         { strain: "hybrid", value: "Labrador retriever. I like a good cuddle after hours of playing in the yard." },
     ]
@@ -41,7 +41,7 @@ var questions = [
 function renderQuestions() {
     var form = $('<form id="questionForm">')
     for (var i = 0; i < questions.length; i++) {
-    var divHolder = $('<div>')
+    var divHolder = $('<div class="questionContainer">')
     var screenQuestionHolder = $('<p>').text(questions[i].question)
     divHolder.append(screenQuestionHolder)
     divHolder.append("<input type='radio' data-strain=" + questions[i].answerList[0].strain + " class='answerButton' value='" + questions[i].answerList[0] + "' name='" + i + "'>" + questions[i].answerList[0].value + "</input> </br>")

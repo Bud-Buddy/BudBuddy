@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-  <title> BudBuddy</title>
+  <title> BudBuddy : Search</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -37,9 +37,53 @@
 
       
 
-     <!-- Start Munchies HTML -->
+     <!-- Start Strain HTML -->
 <div class="container">
- <div class="jumbotron"><h1>Strain Search</h1></div>
+ <div class="jumbotron text-center text-success"><h1>Strain Search</h1></div>
+ <div class="container  mb-5">
+
+
+        <div class="btn-group  mb-5">
+            <button type="button" class="btn">Strain Type</button>
+            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item indica" href="#">Indica </a>
+              <a class="dropdown-item sativa" href="#">Sativa</a>
+              <a class="dropdown-item hybrid" href="#">Hybrid</a>
+            </div>
+          </div>
+          <div class="btn-group  mb-5">
+            <button type="button" class="btn">Effect</button>
+            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item indica" href="#">Relaxing</a>
+              <a class="dropdown-item sativa" href="#">Uplifting</a>
+              <a class="dropdown-item hybrid" href="#">Relaxing and Uplifting</a>
+            </div>
+          </div>
+          <div class="btn-group  mb-5">
+            <button type="button" class="btn">Symptoms</button>
+            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item indica" href="#">Insomnia</a>
+            <a class="dropdown-item sativa" href="#">Depression</a>
+            <a class="dropdown-item hybrid" href="#">Insomnia and Depression</a>
+          </div>
+        </div>    
+        
+        <div class="container">
+          <!-- Cards Display -->
+          <div class="" id="cardsDiv"></div>
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 

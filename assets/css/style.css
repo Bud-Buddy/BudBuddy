@@ -11,10 +11,9 @@ body{
 
 .navbar-nav{
 	margin: 10px;
-	background: ;
 }
 .navbar-expand-sm{
-	background: ;	
+	background: white;	
 }
 
 .nav-link{
@@ -61,4 +60,18 @@ transition: 1s ease;
 
 .modSubj{
     margin: 8px;
+}
+
+/* Quiz Styles */
+
+#questionForm{
+	display: flex;
+	flex-wrap: wrap;
+}
+.questionContainer {
+    width: 200px;
+    height: auto;
+    margin: 2px;
+    padding: 5px;
+    box-shadow: 6px 4px 5px 1px grey;
 }

@@ -5,7 +5,7 @@ var hybrid = "strains/search/race/hybrid"
 var sativa = "strains/search/race/sativa"
 var indica = "strains/search/race/indica"
 placeholderString = "strains/search/race/"
-searchInput = ""
+var searchInput = ""   
 var imgArray = [
     // Hybrid
     "assets/imgs/hybrid1.jpg", "assets/imgs/hybrid2.jpg", "assets/imgs/hybrid3.jpg", "assets/imgs/hybrid4.jpg", "assets/imgs/hybrid5.jpg", "assets/imgs/hybrid6.jpg","assets/imgs/hybrid7.jpg","assets/imgs/hybrid8.jpg","assets/imgs/hybrid9.jpg",
@@ -16,18 +16,22 @@ var imgArray = [
 ]
 
 var strainAPI = "http://strainapi.evanbusse.com/SBAgs43/"
+var description = "http://strainapi.evanbusse.com/SBAgs43/strains/data/desc/"
 
 
   $(document).on("click",".indica", function(){
             searchInput = indica
+            // getInfo()
             appendInfo()
         })
         $(document).on("click",".sativa", function(){
             searchInput = sativa
+            // getInfo()
             appendInfo()
         })
         $(document).on("click",".hybrid", function(){
             searchInput = hybrid
+            // getInfo()
             appendInfo()
 
         })
@@ -69,11 +73,26 @@ function appendInfo(){
 
             newCard.prepend(newImage, cardMain, cardTitle, cardText)
             cardsHolder.prepend(newCard)
+
+        var infoURL = description + id
+            console.log(infoURL)
+
+        $.ajax({
+            url: queryURL,
+            method:"GET"
+        }).then(function(response){
+            var strainInfo = response.desc
+            console.log(strainInfo)
+        })
+            
     }
 
     })
-    
+
 }
+
+ 
+
 //Strain Descriptions
 // strainapi.evanbusse.com/SBAgs43/strains/data/desc/STRAIN_ID
 

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-  <title> BudBuddy</title>
+  <title> BudBuddy : Quiz</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -34,84 +34,86 @@
 </nav>	  
 <!-- End Nav Bar -->
 
-
-      
+<div class="container">
+    <div class="jumbotron text-center text-success">
+      <h1>New to Cannabis?</h1>
+      <p> <h3>Find your perfect weed </h3></p>
+    </div>
+    <div class="container">
       <div class="container">
-            <div class="jumbotron">
-                    <h1>New to Cannibis?</h1>
-                    <p>Find your perfect weed.</p>
-            </div>
-          <div class="container">
-                <div class="container">
-                    <div class="panel" id="questions"></div>
-                </div>
-          </div>
-          <!-- insert submit button -->
-          <button class="submit">Submit</button>
-          <!-- // insert modal 1-->
-          <div class="modal fade" id="modalIndica" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">We recommend the Indica strain</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Sit back, relax, and inhale the mellow body high of the Indica family. Great for people with physical pain or loss of appetite,
-                  Indicas will transform your body into a calm, lazy member of the Couch Potato Club.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- // insert modal 2 -->
-          <div class="modal fade" id="modalSativa" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">We recommend the Sativa strain</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  For those with depression or anxiety, the Sativa strain will provoide a bubbly, giddy good time. Similar to an alcohol buzz,
-                  the Sativa high helps you overcome social anxiety by creating a happy high focused above the neck.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- // insert modal 3 -->
-          <div class="modal fade" id="modalHybrid" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">We recommend the hybrid strain</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Popular among heavy stoners and newbies alike, hybrid strains allow you to enjoy the best of both Indica and Sativa highs
-                  without the extremes. Because of the wide variety of hybrid varieties, it is easy to "customize" your cannabis
-                  experience.
-                  <html>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="panel" id="questions"></div>
       </div>
-    <!-- Button trigger modal -->	
+    </div>
+  </div>
+</br>
+    <!-- insert submit button -->
+    <div class="text-center">
+    <button class="submit btn-success">Submit</button>
+  </div>
+    <!-- // insert modal 1-->
+    <div class="modal fade" id="modalIndica" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">We recommend the Indica strain</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Sit back, relax, and inhale the mellow body high of the Indica family. Great for people with physical pain or trouble sleeping,
+            Indicas are bred to transform your body into a calm, peaceful state.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // insert modal 2 -->
+    <div class="modal fade" id="modalSativa" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">We recommend the Sativa strain</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Great for those with depression or anxiety, the Sativa strain usually provides a bubbly, giddy good time. Similar to an alcohol buzz,
+            the Sativa experience is a happy high focused above the neck.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // insert modal 3 -->
+    <div class="modal fade" id="modalHybrid" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">We recommend the hybrid strain</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Popular among heavy stoners and newbies alike, hybrid strains allow you to enjoy the best of both Indica and Sativa highs
+            without the extremes. Plus, the wide variety of hybrid varieties makes it is easy to "customize" your cannabis
+            experience.
+            <html>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--Footer w/ Newsletter -->	
 	  
     <div class="card text-center mt-5">
             <div class="card-body">
