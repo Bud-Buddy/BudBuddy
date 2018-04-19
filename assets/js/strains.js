@@ -48,20 +48,16 @@ function appendInfo(){
         var type = response[i].race
         var id = response[i].id
         var image = imgArray[i]
-        var infoURL = description + id
-    
-    $.ajax({
-            url: infoURL,
-            method:"GET"
-    }).then(function(response){
-            var info = response.desc
-        
+        var infoURL = description + id     
+
 
         // Create New Cards
         var cardsHolder = $("#cardsDiv")
+        var cardContainer = $("<div>")
+            cardContainer.addClass("border")
         var newCard = $("<div>") 
-            newCard.addClass("card m-3")
-            newCard.css({"height":"300px", "display": "inline-block","width":"250px",})
+            newCard.addClass("card border m-5")
+            newCard.css({"height":"300px", "display": "inline-block","width":"250px"})
         var newImage = $("<img>")
             newImage.attr("src", image)
             newImage.addClass("searchImages")
@@ -70,20 +66,34 @@ function appendInfo(){
         var cardMain = $("<div>")
             cardMain.addClass("card-img-overlay")
         var cardTitle = $("<h4>")
-            cardTitle.addClass("card-title")
+            cardTitle.addClass("card-header lead")
             cardTitle.text(name)
         var cardText = $("<p>")
-            cardText.addClass("card-text")
+            cardText.addClass("card-title text-right")
             cardText.text(type)
         var cardInfoText = $("<p>")
+            cardInfoText.addClass("card-text")
+
+        newCard.append(cardContainer, newImage, cardMain, cardTitle, cardText, cardInfoText)
+        cardsHolder.prepend(newCard)
+
+        $.ajax({
+            url: infoURL,
+            method:"GET"
+        }).then(function(response){
+            var info = response.desc
+
+            console.log("url" + infoURL + " info : "+ info)     
+    
             cardInfoText.text(info)
+
+
+           
             
-            newCard.prepend(newImage, cardMain, cardTitle, cardText, cardInfoText)
-            cardsHolder.prepend(newCard)
             
 
-            })
-            
+        })
+
     }
 
     })
