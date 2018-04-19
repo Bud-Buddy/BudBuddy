@@ -29,6 +29,27 @@ img {
 }
 
 
+.header{
+	font-family: "Helvetica Neue";
+	color: #FFFFFF;
+	font-weight: 150;
+	font-size:50px;
+	width: 100%;
+	padding-left:0px;
+	padding-right:0px;
+	background-image:url(../imgs/headerbg.jpg);
+
+			 
+}
+
+.card-title{
+	font-weight: bold;
+}
+.searchImages{
+	margin-right: 30px;
+	width: 100%;
+}
+
 .fadein img{
 opacity:0.7;
 transition: 1s ease;
@@ -51,9 +72,19 @@ transition: 1s ease;
 	font-family: "Helvetica Neue";
 	color: white;
 }
+
+.btn-success{
+	background-color: #3f733a;
+	border-color: #3f733a;
+}
 .m-4{
 	margin: 0px;
 }
+
+.h4.header.lead{
+	width: 100%;
+}
+
 
 .page-footer{
 	background: #D8D8D8; 
@@ -70,9 +101,9 @@ transition: 1s ease;
 	flex-wrap: wrap;
 }
 .questionContainer {
-    width: 200px;
-    height: auto;
-    margin: 2px;
-    padding: 5px;
-    box-shadow: 6px 4px 5px 1px grey;
+   	width: 600px;
+	height: auto;
+    margin: 0px;
+    padding: 15px;
+    
 }

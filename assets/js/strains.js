@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////// Search JS/////////////////////////////////////////
 
 var hybrid = "strains/search/race/hybrid"
@@ -48,7 +47,6 @@ function appendInfo(){
         var type = response[i].race
         var id = response[i].id
         var image = imgArray[i]
-        var infoURL = description + id     
 
 
         // Create New Cards
@@ -57,43 +55,37 @@ function appendInfo(){
             cardContainer.addClass("border")
         var newCard = $("<div>") 
             newCard.addClass("card border m-5")
-            newCard.css({"height":"300px", "display": "inline-block","width":"250px"})
+            newCard.css({"height":"", "display": "inline-block","width":""})
         var newImage = $("<img>")
             newImage.attr("src", image)
             newImage.addClass("searchImages")
-            newImage.css({"height":"350px", "display": "inline-block","width":"350px",})
+            newImage.css({"height":"350px", "display": "inline-block","width":"",})
             newImage.addClass("card-img-top")
         var cardMain = $("<div>")
             cardMain.addClass("card-img-overlay")
         var cardTitle = $("<h4>")
             cardTitle.addClass("card-header lead")
             cardTitle.text(name)
-        var cardText = $("<p>")
-            cardText.addClass("card-title text-right")
-            cardText.text(type)
+       
         var cardInfoText = $("<p>")
             cardInfoText.addClass("card-text")
+            // cardInfoText.text(info)
 
-        newCard.append(cardContainer, newImage, cardMain, cardTitle, cardText, cardInfoText)
-        cardsHolder.prepend(newCard)
 
-        $.ajax({
-            url: infoURL,
-            method:"GET"
-        }).then(function(response){
-            var info = response.desc
-
-            console.log("url" + infoURL + " info : "+ info)     
+            
+            newCard.prepend(cardContainer, newImage, cardMain, cardTitle, cardInfoText)
+            cardsHolder.prepend(newCard)
+            
+            var infoURL = description + id
     
-            cardInfoText.text(info)
-
-
-           
+         $.ajax({
+                    url: infoURL,
+                    method:"GET"
+                }).then(function(response){
+                    var info = response.desc
+                    console.log("url" + infoURL + "info : "+ info)     
+            })
             
-            
-
-        })
-
     }
 
     })
