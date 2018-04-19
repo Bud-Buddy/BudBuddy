@@ -49,6 +49,7 @@ transition: 1s ease;
 .btn{
 	background-color: #ff7300;
 	font-family: "Helvetica Neue";
+	color: white;
 }
 .m-4{
 	margin: 0px;

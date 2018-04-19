@@ -21,25 +21,22 @@ var description = "http://strainapi.evanbusse.com/SBAgs43/strains/data/desc/"
 
   $(document).on("click",".indica", function(){
             searchInput = indica
-            // getInfo()
             appendInfo()
         })
         $(document).on("click",".sativa", function(){
             searchInput = sativa
-            // getInfo()
             appendInfo()
         })
         $(document).on("click",".hybrid", function(){
             searchInput = hybrid
-            // getInfo()
             appendInfo()
-
         })
         
 
 function appendInfo(){
     var queryURL  = strainAPI + searchInput
     console.log(queryURL)
+    
 
     $.ajax({
         url: queryURL,
@@ -51,13 +48,20 @@ function appendInfo(){
         var type = response[i].race
         var id = response[i].id
         var image = imgArray[i]
+        var infoURL = description + id
+    
+    $.ajax({
+            url: infoURL,
+            method:"GET"
+    }).then(function(response){
+            var info = response.desc
         
 
         // Create New Cards
         var cardsHolder = $("#cardsDiv")
         var newCard = $("<div>") 
             newCard.addClass("card m-3")
-            newCard.css({"height":"350px", "display": "inline-block","width":"300px",})
+            newCard.css({"height":"300px", "display": "inline-block","width":"250px",})
         var newImage = $("<img>")
             newImage.attr("src", image)
             newImage.addClass("searchImages")
@@ -71,21 +75,14 @@ function appendInfo(){
         var cardText = $("<p>")
             cardText.addClass("card-text")
             cardText.text(type)
-            cardText.text(id)
-
-            newCard.prepend(newImage, cardMain, cardTitle, cardText)
+        var cardInfoText = $("<p>")
+            cardInfoText.text(info)
+            
+            newCard.prepend(newImage, cardMain, cardTitle, cardText, cardInfoText)
             cardsHolder.prepend(newCard)
+            
 
-        var infoURL = description + id
-            console.log(infoURL)
-
-        $.ajax({
-            url: queryURL,
-            method:"GET"
-        }).then(function(response){
-            var strainInfo = response.desc
-            console.log(strainInfo)
-        })
+            })
             
     }
 
